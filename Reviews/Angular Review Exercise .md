@@ -1,38 +1,38 @@
 ## 1. Create a New Angular Project
 
-To create a new Angular project, you'll first need to open the Terminal or Command Prompt. Once open, navigate to the directory where you'd like to create your new project.
+To create a new Angular project, you'll first need to open the Terminal or Command Prompt. Once open, navigate to the directory where you'd like to create your new projet'[lrktoerjipogargadfgdfgdfgdfgct.
 
 Here's the command you'll use to generate a new Angular project:
 
 ```bash
 ng new course-type-crud
-```
+```sfdgsdfgdsf
 
-The `ng new` command is used to create a new Angular project, and `course-type-crud` is the name of the project.
-
+The `ng new` cogdsfgmmand is used to create a new Angular project, and `course-type-crud` is the name of the project.
+dfgsdfg
 After running the command, the Angular CLI (Command Line Interface) will prompt you with a series of questions:
 
-1. **Would you like to add Angular routing?** Type `y` (for yes) or `n` (for no). In this case, type `y` because we will be setting up routing in this application.
+1. **Would you like to add Angular routing?** Type `y` (for yes) or `n` (for no). In this case, type `y` because we will be setting up routdsfgsdfging in this application.
 2. **Which stylesheet format would you like to use?** You can select CSS or any preprocessor you're comfortable with. For this project, you can choose `CSS`.
-
+fdgdsg
 After you've answered the questions, Angular CLI will take a few moments to generate the necessary files and install the dependencies. 
 
-Once the project generation process is complete, navigate into your new project's directory using the following command:
+Once the project generation process is comsdfgsdfgdsfgplete, navigate into your new project's directory using the following command:
 
 ```bash
 cd course-type-crud
 ```
 
-Now, you can open the project in VS Code by typing the following command:
+Now, you can open the project in VS Code by typing the following command:sdfgsdfgdsfgdsfgsd
 
 ```bash
 code .
 ```
 
-This command will open the current directory in VS Code. If the command doesn't work, you might need to [install the `code` command in PATH](https://code.visualstudio.com/docs/setup/setup-overview).
+This command will open the current directory in VS Code. If the command doesn't work, you might need todfgsdfg [install the `code` command in PATH](https://code.visualstudio.com/docs/setup/setup-overview).
 
 Now that you've successfully created an Angular project, you're ready to start building your CourseType CRUD application.
-
+dfgdsfgsdfg
 
 ## 2. Define the Data Model
 
@@ -41,7 +41,7 @@ In Angular, we often use interfaces to define data models. An interface is a Typ
 First, you'll need to create a new folder named `models` inside the `src/app` directory. In the `models` folder, create a new file named `course-type.model.ts`.
 
 The `course-type.model.ts` file should look like this:
-
+sdfgdsfgsdfgdsg
 ```typescript
 export interface CourseType {
   CourseTypeId: number;
