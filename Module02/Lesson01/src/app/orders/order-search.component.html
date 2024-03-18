@@ -1,0 +1,9 @@
+<p>Order Search Form</p>
+<label for="id">Id: </label>
+<input id="id" type="text" [formControl]="id">
+<button (click)="searchOrders()">Search</button>
+<hr>
+<p>Order Search Results</p>
+<div class="col-md-4" *ngFor="let order of orders">
+    <app-order [order]="order"></app-order>
+</div>

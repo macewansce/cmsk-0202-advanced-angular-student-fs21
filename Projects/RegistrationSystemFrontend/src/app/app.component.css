@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 20px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar a.nav-link {
+    color: #333;
+    font-size: 1.1em;
+}
+
+button {
+    margin-right: 5px;
+}
+
+.table tr td, .table tr th {
+    vertical-align: middle;
+}
+
+.deleted-row {
+    color: #ccc;
+}
+
+button.btn-danger {
+    margin-left: 10px;
+}

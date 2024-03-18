@@ -1,0 +1,13 @@
+<p>Order Search Form</p>
+<form [formGroup]="orderSearchForm" (ngSubmit)="searchOrders()">
+    <div class="form-group">
+        <label for="id">Id: </label>
+        <input type="text" class="form-control" id="id" formControlName="id">
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+<hr>
+<p>Order Search Results</p>
+<app-order></app-order>

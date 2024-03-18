@@ -1,0 +1,20 @@
+<p>Order Search Form</p>
+<form [formGroup]="orderSearchForm" (ngSubmit)="searchOrders()">
+    <div class="form-group">
+        <label for="id">Id: </label>
+        <input type="text" class="form-control" id="id" formControlName="id"
+            [ngClass]="{ 'is-invalid': f['id'].errors }">
+        <div *ngIf="f['id'].errors" class="invalid">
+            <div *ngIf="f['id'].errors['required']">Id is required</div>
+        </div>
+        <div *ngIf="f['id'].errors" class="invalid">
+            <div *ngIf="f['id'].errors['invalidOrderId']">Id must not be less than 1 nor greater than 99999</div>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+<hr>
+<p>Order Search Results</p>
+<app-order></app-order>

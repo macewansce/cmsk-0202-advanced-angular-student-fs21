@@ -1,0 +1,20 @@
+<h2>Order</h2>
+
+<div class="card mb-3 bg-light">
+    <div class="card-body">
+        Id: {{order.id}} <br>
+        Customer Id: {{order.customerId}} <br>
+        Order Date: {{order.orderDate | customDate}} <br>
+        Required Date: {{order.requiredDate | customDate}} <br>
+        Ship Via: {{order.shipVia}} <br> 
+        Freight: {{order.freight | currency:'CAD'}} <br>
+        Ship Name: {{order.shipName}}  <br>
+        Ship Address: {{order.shipAddress}} <br>
+        Ship City {{order.shipCity}} <br>
+        Ship Postal Code: {{order.shipPostalCode}} <br>
+        Ship Country: {{order.shipCountry}} <br>
+        <br>
+    </div>
+
+</div>
+

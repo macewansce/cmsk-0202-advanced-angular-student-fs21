@@ -1,0 +1,11 @@
+<form (ngSubmit)="saveCourseType()">
+  <div class="form-group">
+      <label>Type Name</label>
+      <input type="text" class="form-control" [(ngModel)]="courseType.typeName" name="TypeName" required>
+  </div>
+  <div class="form-group">
+      <label>Type Description</label>
+      <textarea class="form-control" [(ngModel)]="courseType.typeDescription" name="TypeDescription" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

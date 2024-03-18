@@ -1,0 +1,11 @@
+<h1>Person List</h1>
+<hr>
+<button (click)="togglePersonList()">Display/Hide Person List</button>
+<hr>
+<ng-container *ngIf="isDisplayPersonList">
+    <div class="col-md-4" *ngFor="let person of persons">
+        <app-person [person]="person"></app-person>
+    </div>
+</ng-container>
+<hr>
+<span>Current Time: {{currentTime | date: 'fullTime'}}</span>
