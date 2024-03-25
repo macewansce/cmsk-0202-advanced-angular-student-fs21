@@ -53,5 +53,6 @@ app.MapGet("/", () => "Welcome to the Registration System API!");
 
 app.RegisterCourseTypesEndpoints();
 
+app.RegisterStudentsEndpoints();
 
 app.Run();
