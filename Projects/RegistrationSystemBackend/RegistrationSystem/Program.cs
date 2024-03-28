@@ -1,11 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using RegistrationSystem.Data;
 using RegistrationSystem.Endpoints;
+using RegistrationSystem.Mappers;
+using RegistrationSystem.Services;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<CourseTypesService>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddControllers();
 
@@ -54,5 +60,9 @@ app.MapGet("/", () => "Welcome to the Registration System API!");
 app.RegisterCourseTypesEndpoints();
 
 app.RegisterStudentsEndpoints();
+
+app.RegisterCoursesEndpoints();
+
+app.RegisterRegistrationsEndpoints();
 
 app.Run();

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace RegistrationSystem.Models
+namespace RegistrationSystem.Models.Entities
 {
     public class Student
     {

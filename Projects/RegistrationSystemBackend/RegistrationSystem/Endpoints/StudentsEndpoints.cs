@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RegistrationSystem.Data;
-using RegistrationSystem.Models;
+using RegistrationSystem.Models.Entities;
 
 namespace RegistrationSystem.Endpoints
 {

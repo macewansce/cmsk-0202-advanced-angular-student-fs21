@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
-namespace RegistrationSystem.Models
+namespace RegistrationSystem.Models.Entities
 {
     public class Course
     {

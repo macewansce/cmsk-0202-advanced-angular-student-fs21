@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using RegistrationSystem.Data;
-using RegistrationSystem.Models;
+using MiniValidation;
+using RegistrationSystem.Models.Dtos;
+using RegistrationSystem.Services;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RegistrationSystem.Endpoints
 {
@@ -9,68 +10,62 @@ namespace RegistrationSystem.Endpoints
     {
         public static void RegisterCourseTypesEndpoints(this WebApplication app)
         {
-            _ = app.MapGet("/courseTypes", async (ApplicationDbContext db) =>
+            _ = app.MapGet("/courseTypes", async (CourseTypesService service) =>
             {
-                return await db.CourseTypes.ToListAsync();
+                return await service.GetAllAsync();
             });
 
-            _ = app.MapGet("/courseTypes/{coursetypeId}", async (int coursetypeId, ApplicationDbContext db) =>
+            _ = app.MapGet("/courseTypes/{courseTypeId}", async (int courseTypeId, CourseTypesService service) =>
             {
-                CourseType? courseType = await db.CourseTypes.FindAsync(coursetypeId);
+                CourseTypeDto? courseType = await service.GetOneAsync(courseTypeId);
 
                 return courseType == null ? Results.NotFound() : Results.Ok(courseType);
             });
 
-            _ = app.MapPut("/courseTypes/{courseTypeId}", async (int courseTypeId, [FromBody] CourseType courseType, ApplicationDbContext db) =>
+            _ = app.MapPut("/courseTypes/{courseTypeId}", async (int courseTypeId, CourseTypeDto courseType, CourseTypesService service) =>
             {
-                CourseType? courseTypeToUpdate = await db.CourseTypes.FindAsync(courseTypeId);
+                int result = await service.UpdateAsync(courseTypeId, courseType);
 
-                if (courseTypeToUpdate == null)
+                if (result == -2)
                 {
                     return Results.NotFound();
                 }
-                else
+                else if (result == 1) 
                 {
-                    courseTypeToUpdate.TypeName = courseType.TypeName;
-                    courseTypeToUpdate.TypeDescription = courseType.TypeDescription;
-
-                    _ = await db.SaveChangesAsync();
-
                     return Results.NoContent();
+                } else
+                {
+                    return Results.Problem();
                 }
             });
 
-            _ = app.MapPost("/courseTypes", async ([FromBody] CourseType courseType, ApplicationDbContext db) =>
+            _ = app.MapPost("/courseTypes", async (CourseTypeDto courseType, CourseTypesService service) =>
             {
-                CourseType courseTypeToAdd = new()
+                if (!MiniValidator.TryValidate(courseType, out var errors))
                 {
-                    TypeName = courseType.TypeName,
-                    TypeDescription = courseType.TypeDescription,
-                    IsDeleted = false
-                };
+                    return Results.ValidationProblem(errors);
+                }
 
-                _ = db.CourseTypes.Add(courseTypeToAdd);
+                CourseTypeDto addedCourseType = await service.AddAsync(courseType);
 
-                _ = await db.SaveChangesAsync();
-
-                return Results.Created($"/courseTypes/{courseType.CourseTypeId}", courseTypeToAdd);
+                return Results.Created($"/courseTypes/{addedCourseType.CourseTypeId}", addedCourseType);
             });
 
-            _ = app.MapDelete("/courseTypes/{courseTypeId}", async (int courseTypeId, ApplicationDbContext db) =>
+            _ = app.MapDelete("/courseTypes/{courseTypeId}", async (int courseTypeId, CourseTypesService service) =>
             {
-                CourseType? courseTypeToRemove = await db.CourseTypes.FindAsync(courseTypeId);
+                var result = await service.DeleteAsync(courseTypeId);
 
-                if (courseTypeToRemove == null)
+                if (result == -2)
                 {
                     return Results.NotFound();
                 }
+                else if (result == 1)
+                {
+                    return Results.Ok();
+                }
                 else
                 {
-                    courseTypeToRemove.IsDeleted = true;
-
-                    _ = await db.SaveChangesAsync();
-
-                    return Results.Ok(courseTypeToRemove);
+                    return Results.Problem();
                 }
             });
         }

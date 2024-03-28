@@ -1,4 +1,4 @@
-﻿using RegistrationSystem.Models;
+﻿using RegistrationSystem.Models.Entities;
 
 namespace RegistrationSystem.Data
 {
