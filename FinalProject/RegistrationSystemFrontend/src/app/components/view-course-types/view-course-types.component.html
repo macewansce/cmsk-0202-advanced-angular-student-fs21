@@ -1,0 +1,20 @@
+<button class="btn btn-primary" routerLink="/manage-course-type">Add Course Type</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Type Name</th>
+      <th>Type Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let courseType of courseTypes" [class.table-secondary]="courseType.isDeleted">
+      <td>{{courseType.typeName}}</td>
+      <td>{{courseType.typeDescription}}</td>
+      <td>
+        <button class="btn btn-warning" [routerLink]="['/manage-course-type', courseType.courseTypeId]" *ngIf="!courseType.isDeleted">Edit</button>
+        <button class="btn btn-danger" (click)="deleteCourseType(courseType.courseTypeId)" *ngIf="!courseType.isDeleted">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
