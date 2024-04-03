@@ -8,10 +8,10 @@ Implement backend of a Course Registration System that manages instructors.
 You are provided with a skeleton of a backend system for managing instructors in a Course Registration System. Your task is to develop the missing parts and ensure the entire system functions correctly. This includes:
 
 1. **Entity Framework Setup:**
-   - Create an `Instructor` entity model corresponding to the database table for storing instructors. The model should include properties: `InstructorId` (primary key), `FirstName`, `LastName`, `Email`, and `IsDeleted`. Optional for today: Implement a navigation property `Courses` to represent the many courses an instructor can teach.
+   - Create an `Instructor` entity model corresponding to the database table for storing instructors. The model should include properties: `InstructorId` (primary key), `FirstName`, `LastName`, `Email`, `PhoneNumber` and `IsDeleted`. 
 
 2. **Data Transfer Objects (DTOs):**
-   - Define an `InstructorDto` with necessary validation attributes to ensure data integrity. The DTO should include properties for `InstructorId`, `FirstName`, `LastName`, `Email`, and `IsDeleted`.
+   - Define an `InstructorDto` with necessary validation attributes to ensure data integrity. The DTO should include properties for `InstructorId`, `FirstName`, `LastName`, `Email`, `PhoneNumber` and `IsDeleted`.
 
 3. **AutoMapper Configuration:**
    - Configure AutoMapper in a `MappingProfile` to map between the `Instructor` entity and the `InstructorDto`.
