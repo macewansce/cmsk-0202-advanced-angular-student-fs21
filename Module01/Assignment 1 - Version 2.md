@@ -1,4 +1,4 @@
-Create an Angular project with any name you wish.
+Create an Angular project with Assignemnt-Id (i.e. Assignment1-123234234)
 
 Create a Product model. Here is a snippet of the data:
 {
